@@ -4,9 +4,10 @@
 # [interval] - Status polling interval for monit. Optional. Default 30 sec.
 #
 class monit::config (
-  $use_syslog = false,
-  $interval = 120,
-  $httpd    = false,
+  $use_syslog     = false,
+  $interval       = 120,
+  $interval_delay = undef,
+  $httpd          = false,
 ) {
 
 include monit::params
