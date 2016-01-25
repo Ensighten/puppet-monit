@@ -17,8 +17,12 @@
 ## Start Monit in the background (run as a daemon):
 #
   set daemon <%= @interval %>             # check services at 30-sec intervals
+<%- if @interval_delay %>
+    with start delay <%= @interval_delay %>
+<%- else %>
 #   with start delay 240    # optional: delay the first check by 4-minutes (by
 #                           # default Monit check immediately after Monit start)
+<%- end %>
 #
 #
 ## Set syslog logging with the 'daemon' facility. If the FACILITY option is

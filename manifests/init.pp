@@ -1,7 +1,8 @@
 #
 class monit(
-  $interval = 120,
-  $httpd    = false,
+  $interval       = 120,
+  $interval_delay = undef,
+  $httpd          = false,
 ) {
 
   class {'monit::package':
@@ -9,10 +10,11 @@ class monit(
   }
 
   class {'monit::config':
-    interval => $interval,
-    httpd    => $httpd,
-    notify   => Class['monit::service'],
-    require  => Class['monit::package'],
+    interval       => $interval,
+    interval_delay => $interval_delay,
+    httpd          => $httpd,
+    notify         => Class['monit::service'],
+    require        => Class['monit::package'],
   }
 
   class {'monit::service':
